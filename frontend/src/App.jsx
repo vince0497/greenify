@@ -5,11 +5,15 @@ import './App.css'
 import OpenAI from "openai";
 
 import { GoogleGenerativeAI } from '@google/generative-ai';
+//dotenv.config();
+
+
+//const API_KEY = 
+// "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";
 
 
 function App() {
  // const client = new OpenAI({ apiKey: API_KEY, dangerouslyAllowBrowser: true  });
- const GEN_API = "AIzaSyC2Jot_rFbrV1xs5GUz_MwZ0E1jvZNTvpo";
 
   const genAI = new GoogleGenerativeAI(GEN_API);
   const model = genAI.getGenerativeModel({model:"gemini-1.5-flash"});
@@ -20,32 +24,7 @@ function App() {
   const [sentiment, setSentiment] = useState("");
 
 
-   const barcodeLookup = async() => {
-    
-    await fetch("https://api.openai.com/v1/threads/thread_dR8eJngh0vYi3z77vVTs7wcQ/messages",{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json",
-        "Authorization":"Bearer " + API_KEY,
-        "OpenAI-Beta": "assistants=v2"
-      },
-      body: JSON.stringify(APIBody)
-    }).then((data) => {
-      return data.json();
-    }).then((data) =>{
-      console.log(data);
-    });
-  }//call api
 
-  // import OpenAI from "openai";
-  // const client = new OpenAI();
-  
-  // const response = await client.responses.create({
-  //     model: "gpt-4o",
-  //     input: "Write a one-sentence bedtime story about a unicorn.",
-  // });
-  
-  // console.log(response.output_text);
   
   const handleAIRequest = async() => {
     //const response = 
