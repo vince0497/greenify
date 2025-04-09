@@ -5,12 +5,6 @@ import './App.css'
 import OpenAI from "openai";
 
 import { GoogleGenerativeAI } from '@google/generative-ai';
-//dotenv.config();
-
-
-//const API_KEY = 
-// "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";
-
 
 function App() {
  // const client = new OpenAI({ apiKey: API_KEY, dangerouslyAllowBrowser: true  });
