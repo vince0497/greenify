@@ -7,7 +7,6 @@ import OpenAI from "openai";
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 function App() {
- // const client = new OpenAI({ apiKey: API_KEY, dangerouslyAllowBrowser: true  });
 
   const genAI = new GoogleGenerativeAI(GEN_API);
   const model = genAI.getGenerativeModel({model:"gemini-1.5-flash"});
@@ -21,13 +20,7 @@ function App() {
 
   
   const handleAIRequest = async() => {
-    //const response = 
-    // await client.responses.create({
-    //   model: "gpt-4o",
-    //   input: "Write a one-sentence bedtime story about a ghost."
-    // }).then((data)=>{
-    //   console.log(response);
-    // });
+
     const template = `Nutrition value of ${thoughts} and it's sustainability to produce eco friendly product. Make a short summary of this in a readable format. Make it sounds like you are giving statement, please dont ask me an open ended question at the end.`;
 
   try{
