@@ -1,8 +1,14 @@
 import  express from "express";
 import path from 'path';
 import dotenv from 'dotenv';
+import e from "express";
+import promptRoutes from "./routes/prompt.routes.js";
 
+dotenv.config();
 const app = express();
+app.use(express.json());
+app.use("/api/prompts",promptRoutes);
+
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();  
 

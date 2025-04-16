@@ -1,20 +1,20 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+// import './App.css'
 import OpenAI from "openai";
-
-import { GoogleGenerativeAI } from '@google/generative-ai';
-
+import {usePromptStore } from "../store/prompt.js"
+import { Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar.jsx';
+import { Box, useColorModeValue } from '@chakra-ui/react';
 function App() {
-
-  const genAI = new GoogleGenerativeAI(GEN_API);
-  const model = genAI.getGenerativeModel({model:"gemini-1.5-flash"});
   
-  
-  const [count, setCount] = useState(0)
+  const {getPrompt} = usePromptStore();
+  // const [count, setCount] = useState(0)
   const [thoughts, setThoughts] = useState("");
+  const [barcode, setBarcode] = useState("");
   const [sentiment, setSentiment] = useState("");
+
 
 
 
@@ -22,13 +22,9 @@ function App() {
   const handleAIRequest = async() => {
 
     const template = `Nutrition value of ${thoughts} and it's sustainability to produce eco friendly product. Make a short summary of this in a readable format. Make it sounds like you are giving statement, please dont ask me an open ended question at the end.`;
-
+    const barcode = "4800011133478"
   try{
-    const result = await model.generateContent(thoughts);
-    const response = await result.response;
- console.log(response);
- console.log(response.text());
- setSentiment(response.text());
+    await getPrompt(template, barcode)
   }catch(error){
     console.log(error);
   }finally{
@@ -37,13 +33,20 @@ function App() {
     
   }
 
+//  console.log(barcode)
 
   return (
     <>
 
+    {/* <textarea name="bc" id="" placeholder="Barcode"
+    onChange={(e) => setBarcode(e.target.value)}
+    >
+
+    </textarea>
+
     <textarea 
     onChange={(e) => setThoughts(e.target.value)  }
-    name="saying" id="" placeholder="What do you think?">
+    name="saying" id="" placeholder="Whats?">
 
     </textarea>
 
@@ -55,28 +58,17 @@ function App() {
         :
         null
       }
-    </div>
+    </div> */}
 
-      {/* <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
+    <Box minH={"100vh"} bg={useColorModeValue("gray.300", "gray.900")}>
+      <Navbar />
+      <Routes>
+        <Route path="/" />
+        <Route path="/barcode-search" />
+      </Routes>
+    </Box>
+
+   
     </>
   )
 }
