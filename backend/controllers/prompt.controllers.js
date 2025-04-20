@@ -21,17 +21,20 @@ export const getPrompts = async(req,res) => {
         const bc = req.params.barcode
         const resy = await fetch(`https://eandata.com/feed/?v=3&keycode=${process.env.BARCODE_API}&mode=json&find=${bc}&has=image,company,long_desc`);
         const data = await resy.json();
-        
-        const prodName = data.product.attributes.product
-        const category = data.product.attributes.category_text_long
- 
+        let prodName = "";
+        let category = "";
+        console.log(data.status.code);
+        if(data.status.code != '500'){
+            prodName = data.product.attributes.product
+            category = data.product.attributes.category_text_long
+    
+        }
+
         console.log("------------------------------")
         
         const result = await model.generateContent(pr);
         const response = await result.response;
-        console.log("================")
-        console.log(response)
-
+        
         const out = {
             input: req.params.prompt,
             prompt: response,

@@ -24,6 +24,7 @@ const HomePrompts = () => {
       try{
        
         const res = await getPrompt(template, barcode)
+        console.log(res.data)
         const promptResponse = res.data.prompt.candidates[0].content.parts[0];
         setSentiment(promptResponse.text)
       
