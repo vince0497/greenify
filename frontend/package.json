@@ -17,6 +17,7 @@
     "@google/generative-ai": "^0.24.0",
     "dotenv": "^16.4.7",
     "framer-motion": "^12.7.3",
+    "mern_open_ai": "file:..",
     "openai": "^4.91.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

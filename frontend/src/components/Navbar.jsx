@@ -39,7 +39,7 @@ const Navbar = () => {
                 bgClip={"text"}
                 bgGradient={"linear(to-r,cyan.400, blue.500)"}
                 >
-                   Your eco-friendly advisor
+                   Love, Save, Preserve
                 </Text>
                 <HStack>
                     <Link>

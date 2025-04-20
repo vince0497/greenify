@@ -3,6 +3,11 @@ import dotenv from 'dotenv';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 
+// export const createPrompts = async(req, res) => {
+
+
+// }//end of create prompts
+
 
 
 export const getPrompts = async(req,res) => {
@@ -24,6 +29,8 @@ export const getPrompts = async(req,res) => {
         
         const result = await model.generateContent(pr);
         const response = await result.response;
+        console.log("================")
+        console.log(response)
 
         const out = {
             input: req.params.prompt,

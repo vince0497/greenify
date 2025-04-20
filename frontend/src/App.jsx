@@ -7,6 +7,8 @@ import {usePromptStore } from "../store/prompt.js"
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import { Box, useColorModeValue } from '@chakra-ui/react';
+import HomePrompts from './pages/HomePrompts.jsx';
+
 function App() {
   
   const {getPrompt} = usePromptStore();
@@ -38,33 +40,13 @@ function App() {
   return (
     <>
 
-    {/* <textarea name="bc" id="" placeholder="Barcode"
-    onChange={(e) => setBarcode(e.target.value)}
-    >
 
-    </textarea>
-
-    <textarea 
-    onChange={(e) => setThoughts(e.target.value)  }
-    name="saying" id="" placeholder="Whats?">
-
-    </textarea>
-
-    <button onClick={handleAIRequest}>Submit</button>
-
-    <div>
-      {sentiment !== "" ? 
-        <h5><p>{sentiment}</p></h5>
-        :
-        null
-      }
-    </div> */}
 
     <Box minH={"100vh"} bg={useColorModeValue("gray.300", "gray.900")}>
       <Navbar />
       <Routes>
-        <Route path="/" />
-        <Route path="/barcode-search" />
+        <Route path="/" element={<HomePrompts />} />
+        {/* <Route path="/barcode-search" element={}/> */}
       </Routes>
     </Box>
 
