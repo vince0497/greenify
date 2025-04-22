@@ -41,7 +41,7 @@ const HomePrompts = () => {
       <Container maxW={"container.sm"} >
         <VStack spacing={0} alignItems={"center"} > 
        
-              <Heading as="h3" size={"2xl"} textAlign={"center"} mb={8}>
+              <Heading as="h3" size={"2xl"} textAlign={"center"} mb={8}    paddingTop={"5"}>
                 Hello We Are Greenify!
               </Heading>
 
@@ -52,10 +52,10 @@ const HomePrompts = () => {
               p={6} rounded={"lg"} shadow={"md"}
               >
               <VStack spacing={4}>
-              <Textarea name="bc" id="" placeholder="Barcode"
+              {/* <Textarea name="bc" id="" placeholder="Barcode"
                 onChange={(e) => setBarcode(e.target.value)}
                 value={barcode} size='sm'
-                />
+                /> */}
 
                 <Textarea 
                 onChange={(e) => setThoughts(e.target.value)  }
