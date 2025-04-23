@@ -1,6 +1,6 @@
-import { Button, Container, Flex, HStack,VStack, Stack,Text, useColorMode } from "@chakra-ui/react";
+import { Button, Container, Flex, HStack,VStack, Stack,Text, useColorMode, Menu, MenuButton, MenuList, MenuItem, IconButton } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import {PlusSquareIcon} from "@chakra-ui/icons"
+import {AddIcon, EditIcon, ExternalLinkIcon, HamburgerIcon, PlusSquareIcon, RepeatIcon} from "@chakra-ui/icons"
 import { IoMoon } from "react-icons/io5"
 import { LuSun } from "react-icons/lu"
 
@@ -44,19 +44,42 @@ const Navbar = () => {
                 >
                    Love, Save, Preserve
                 </Text>
-                <Stack   direction='row' >
+                 {/* <Stack   direction='row' >
                 
                     
-                    {/* <Link> */}
+                     <Link> 
                         <Button size="xs">
                             <PlusSquareIcon fontSize={10} />
                         </Button>
-                    {/* </Link> */}
+                    </Link> 
 
                     <Button onClick={toggleColorMode}  size="xs">
                         {colorMode === "light" ? <IoMoon /> : <LuSun  />}
                     </Button>
-                </Stack>
+                </Stack>  */}
+
+                <Menu>
+                    <MenuButton
+                        as={IconButton}
+                        aria-label='Options'
+                        icon={<HamburgerIcon />}
+                        variant='outline'
+                    />
+                    <MenuList>
+                        <MenuItem icon={colorMode === "light" ? <IoMoon /> : <LuSun  />} onClick={toggleColorMode} >
+                             {colorMode === "light" ?  "Dark Mode" : "Light Mode" }
+                        </MenuItem>
+                        {/* <MenuItem icon={<ExternalLinkIcon />} command='⌘N'>
+                        New Window
+                        </MenuItem>
+                        <MenuItem icon={<RepeatIcon />} command='⌘⇧N'>
+                        Open Closed Tab
+                        </MenuItem>
+                        <MenuItem icon={<EditIcon />} command='⌘O'>
+                        Open File...
+                        </MenuItem> */}
+                    </MenuList>
+                    </Menu>
             </Flex>
 
         </Container>

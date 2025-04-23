@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 // import './App.css'
 import OpenAI from "openai";
+import { Helmet } from 'react-helmet';
 import {usePromptStore } from "../store/prompt.js"
 import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
@@ -10,7 +11,7 @@ import { Box, useColorModeValue } from '@chakra-ui/react';
 import HomePrompts from './pages/HomePrompts.jsx';
 
 function App() {
-  
+  const TITLE = 'My Page Title';
   const {getPrompt} = usePromptStore();
   // const [count, setCount] = useState(0)
   const [thoughts, setThoughts] = useState("");
@@ -40,7 +41,9 @@ function App() {
   return (
     <>
 
-
+  <Helmet>
+          <title>{ TITLE }</title>
+        </Helmet>
 
     <Box minH={"100vh"} bg={useColorModeValue("gray.300", "gray.900")}>
       <Navbar />
