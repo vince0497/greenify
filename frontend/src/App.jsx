@@ -11,7 +11,7 @@ import { Box, useColorModeValue } from '@chakra-ui/react';
 import HomePrompts from './pages/HomePrompts.jsx';
 
 function App() {
-  const TITLE = 'My Page Title';
+  const TITLE = 'Greenify';
   const {getPrompt} = usePromptStore();
   // const [count, setCount] = useState(0)
   const [thoughts, setThoughts] = useState("");
@@ -36,14 +36,14 @@ function App() {
     
   }
 
-//  console.log(barcode)
+
 
   return (
     <>
 
   <Helmet>
           <title>{ TITLE }</title>
-        </Helmet>
+  </Helmet>
 
     <Box minH={"100vh"} bg={useColorModeValue("gray.300", "gray.900")}>
       <Navbar />
